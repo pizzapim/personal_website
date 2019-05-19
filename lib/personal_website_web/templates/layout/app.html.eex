@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body>
+    <nav>
+      <a href="<%= Routes.page_path(Endpoint, :front_page) %>">&#x3C;root&#x3E;</a>
+      <p>Pim's Website</p>
+      <a href="<%= Routes.page_path(Endpoint, :about) %>">&#x3C;about&#x3E;</a>
+    </nav>
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>

@@ -1,1 +1,34 @@
-/* This file is for your main application css. */
+/* Beautiful style stolen from:
+https://perfectmotherfuckingwebsite.com/
+*/
+
+body {
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 0 10px;
+  font: 18px/1.5 -apple-system, BlinkMacSystemFont, "avenir next", avenir, "Segoe UI", "lucida grande", "helvetica neue", helvetica, "Fira Sans", roboto, noto, "Droid Sans", cantarell, oxygen, ubuntu, "franklin gothic medium", "century gothic", "Liberation Sans", sans-serif;
+  color: #444
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+nav * {
+  text-decoration: none;
+  color: #FFB000;
+  font-size: 2rem;
+}
+
+nav p {
+  display: inline-block;
+  margin: 0;
+  color: #444;
+}
