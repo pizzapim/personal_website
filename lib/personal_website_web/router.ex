@@ -20,6 +20,12 @@ defmodule PersonalWebsiteWeb.Router do
     get "/about", PageController, :about
   end
 
+  scope "post", PersonalWebsiteWeb do
+    pipe_through :browser
+
+    get "/:post", PostController, :show
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", PersonalWebsiteWeb do
   #   pipe_through :api
