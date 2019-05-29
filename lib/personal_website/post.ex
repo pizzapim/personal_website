@@ -10,7 +10,7 @@ defmodule PersonalWebsite.Post do
   end
 
   @doc false
-  def changeset(post, attrs) do
+  def changeset(post, attrs \\ %{}) do
     post
     |> cast(attrs, [:title, :article])
     |> validate_required([:title, :article])

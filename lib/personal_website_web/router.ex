@@ -23,7 +23,9 @@ defmodule PersonalWebsiteWeb.Router do
   scope "/post", PersonalWebsiteWeb do
     pipe_through :browser
 
+    get "/new", PostController, :new
     get "/:post", PostController, :show
+    post "/", PostController, :create
   end
 
   scope "/auth", PersonalWebsiteWeb do
