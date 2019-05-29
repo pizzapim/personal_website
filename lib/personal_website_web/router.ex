@@ -16,7 +16,7 @@ defmodule PersonalWebsiteWeb.Router do
   scope "/", PersonalWebsiteWeb do
     pipe_through :browser
 
-    get "/", PageController, :front_page
+    get "/", PostController, :index
     get "/about", PageController, :about
   end
 

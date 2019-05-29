@@ -3,7 +3,13 @@ defmodule PersonalWebsiteWeb.PostController do
   use PersonalWebsiteWeb, :controller
   alias PersonalWebsite.{Repo, Post}
 
-  plug PersonalWebsiteWeb.Plugs.AuthenticateAdmin when action not in [:show]
+  plug PersonalWebsiteWeb.Plugs.AuthenticateAdmin
+    when action not in [:show, :index]
+
+  def index(conn, _params) do
+    posts = Repo.all(from p in Post, order_by: [desc: p.inserted_at])
+    render(conn, :index, posts: posts)
+  end
 
   def show(conn, %{"post_slug" => post_slug}) do
     post = find_post(conn, post_slug)
