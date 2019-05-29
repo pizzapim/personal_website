@@ -22,7 +22,7 @@ defmodule PersonalWebsiteWeb.PostController do
     render(conn, :new, changeset: changeset)
   end
 
-  def create(conn, %{"post_id" => post_params}) do
+  def create(conn, %{"post" => post_params}) do
     changeset = Post.changeset(%Post{}, post_params)
     case Repo.insert(changeset) do
       {:ok, schema} -> render(conn, :show, post: schema)
