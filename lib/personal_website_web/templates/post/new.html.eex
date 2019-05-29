@@ -4,6 +4,6 @@
   <%= label f, :title %>
   <%= text_input f, :title, placeholder: "Title" %>
   <%= label f, :article %>
-  <%= textarea f, :article %>
+  <%= textarea f, :article, placeholder: "Article" %>
   <%= submit "Post" %>
 <% end %>
