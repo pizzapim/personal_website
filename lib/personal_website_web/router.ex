@@ -25,10 +25,10 @@ defmodule PersonalWebsiteWeb.Router do
 
     post "/", PostController, :create
     get "/new", PostController, :new
-    get "/:post_id", PostController, :show
-    get "/:post_id/edit", PostController, :edit
-    put "/:post_id", PostController, :update
-    delete "/:post_id", PostController, :destroy
+    get "/:post_slug", PostController, :show
+    get "/:post_slug/edit", PostController, :edit
+    put "/:post_slug", PostController, :update
+    delete "/:post_slug", PostController, :destroy
   end
 
   scope "/auth", PersonalWebsiteWeb do
