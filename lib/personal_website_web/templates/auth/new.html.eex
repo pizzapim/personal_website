@@ -6,3 +6,7 @@
   <%= password_input f, :password, placeholder: "Password" %>
   <%= submit "Authenticate" %>
 <% end %>
+
+<%= if is_admin?(@conn) do %>
+  <%= link("Logout", to: Routes.auth_path(@conn, :destroy), method: :delete) %>
+<% end %>

@@ -36,5 +36,6 @@ defmodule PersonalWebsiteWeb.Router do
 
     get "/", AuthController, :new
     post "/", AuthController, :create
+    delete "/", AuthController, :destroy
   end
 end

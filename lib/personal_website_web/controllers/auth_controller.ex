@@ -14,4 +14,10 @@ defmodule PersonalWebsiteWeb.AuthController do
       render(conn, "new.html", errors: [password: {"Password is incorrect.", %{count: 1}}])
     end
   end
+
+  def destroy(conn, _params) do
+    conn
+    |> delete_session("is_admin")
+    |> redirect(to: "/")
+  end
 end
