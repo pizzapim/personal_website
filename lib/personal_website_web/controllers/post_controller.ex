@@ -44,7 +44,6 @@ defmodule PersonalWebsiteWeb.PostController do
   end
 
   def update(conn, %{"post_id" => post_id, "post" => post_params}) do
-    # require IEx; IEx.pry
     post = Repo.one(from p in Post, where: p.id == ^post_id)
     if post do
       changeset = Post.changeset(post, post_params)
@@ -58,5 +57,10 @@ defmodule PersonalWebsiteWeb.PostController do
       |> put_view(PersonalWebsiteWeb.ErrorView)
       |> render("404.html")
     end
+  end
+
+  def destroy(conn, %{"post_id" => post_id}) do
+    Repo.delete_all(from p in Post, where: p.id == ^post_id)
+    redirect(conn, to: "/")
   end
 end
