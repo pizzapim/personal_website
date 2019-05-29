@@ -1,0 +1,8 @@
+<h1>Authentication</h1>
+
+<%= form_for @conn, Routes.auth_path(@conn, :create), [errors: @conn.assigns[:errors] || []], fn f -> %>
+  <%= error_tag f, :password %>
+  <%= label f, :password %>
+  <%= password_input f, :password, placeholder: "Password" %>
+  <%= submit "Authenticate" %>
+<% end %>
