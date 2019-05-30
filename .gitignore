@@ -34,4 +34,4 @@ npm-debug.log
 /priv/static/
 
 # Environmental variables in development
-/.env
+config/dev.secret.exs

@@ -24,4 +24,12 @@ defmodule PersonalWebsite.Post do
 
     Integer.to_string(post.id) <> "-" <> title
   end
+
+  def get_first_article_sentence(post) do
+    hd(String.split(post.article, ".")) <> "."
+  end
+
+  def get_first_article_paragraph(post) do
+    hd(String.split(post.article, "\n"))
+  end
 end
