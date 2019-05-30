@@ -1,3 +1,46 @@
+<h1>Welcome to my website</h1>
+
 <p>
-Insert very interesting about page here.
+My name is Pim Kunis, and I welcome you to this piece of the internet that I call my own!
+</p>
+
+<p>
+I'll be writing about techy stuff here, as well as about some (possibly obscure) video games.
+</p>
+
+<h2>Who am I?</h2>
+
+<p>
+I'm a developer from the Netherlands. Right now, I'm doing a bachelor's degree Computer Science at the <a href="https://www.uva.nl/en">University of Amsterdam</a>. On the side, I'm part-time employed as a Ruby on Rails developer at <a href="http://adnovation.com/">Adnovation</a>.
+</p>
+
+<h2>Interests</h2>
+
+<p>
+My interests lie mainly in programming and video games. I've been programming in Ruby on Rails for 3 years, semi-professionally (but this site is written in Elixir!) Other experience includes PHP (good old days :)), and recently Phoenix. After touching Erlang at university, I got interested in Elixir too, and it hasn't been disappointing!
+</p>
+
+<p>
+In terms of video games, I play all sorts of genres. From platformers to CRPGs, from visual novels to ARPGs, I've played a lot! The only genres I dislike are real-time strategy, MMORPGs and anything mobile.
+</p>
+
+<div class="interests-showcase">
+  <figure>
+    <a href="http://www.ace-attorney.com/"><img alt="Ace Attorney" src="<%= Routes.static_path(@conn, "/images/ace_attorney_cover.png") %>"></a>
+    <figcaption>Ace Attorney</figcaption>
+  </figure>
+  <figure>
+    <a href="http://www.planescape.com/"><img alt="Planescape: Torment" src="<%= Routes.static_path(@conn, "/images/planescape_torment_cover.jpg") %>"></a>
+    <figcaption>Planescape: Torment</figcaption>
+  </figure>
+  <figure>
+    <a href="https://www.youtube.com/watch?v=xmOCsiZgAbg"><img alt="Deus Ex" src="<%= Routes.static_path(@conn, "/images/deus_ex_cover.jpg") %>"></a>
+    <figcaption>Deus Ex</figcaption>
+  </figure>
+</div>
+
+<h2>How is this site written?</h2>
+
+<p>
+This site is written in Elixir, using the <a href="https://phoenixframework.org/">Phoenix framework</a>.
 </p>
