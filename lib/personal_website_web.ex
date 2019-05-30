@@ -42,6 +42,10 @@ defmodule PersonalWebsiteWeb do
       import PersonalWebsiteWeb.ErrorHelpers
       import PersonalWebsiteWeb.Gettext
       alias PersonalWebsiteWeb.Router.Helpers, as: Routes
+
+      def is_admin?(conn) do
+        Plug.Conn.get_session(conn, "is_admin")
+      end
     end
   end
 
