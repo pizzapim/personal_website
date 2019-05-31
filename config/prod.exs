@@ -1,7 +1,7 @@
 use Mix.Config
 
 config :personal_website, PersonalWebsite.Repo,
-  url: System.get_env("DB_ECTO_URL")
+  url: System.get_env("DATABASE_URL")
   # username: System.get_env("DATABASE_USERNAME"),
   # password: System.get_env("DATABASE_PASSWORD"),
   # database: System.get_env("DATABASE_NAME"),
