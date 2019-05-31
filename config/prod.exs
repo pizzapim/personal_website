@@ -1,12 +1,13 @@
 use Mix.Config
 
 config :personal_website, PersonalWebsite.Repo,
-  username: System.get_env("DATABASE_USERNAME"),
-  password: System.get_env("DATABASE_PASSWORD"),
-  database: System.get_env("DATABASE_NAME"),
-  hostname: System.get_env("DATABASE_URL"),
-  show_sensitive_data_on_connection_error: false,
-  pool_size: 18
+  url: System.get_env("DB_ECTO_URL")
+  # username: System.get_env("DATABASE_USERNAME"),
+  # password: System.get_env("DATABASE_PASSWORD"),
+  # database: System.get_env("DATABASE_NAME"),
+  # hostname: System.get_env("DATABASE_HOSTNAME"),
+  # show_sensitive_data_on_connection_error: false,
+  # pool_size: 18
 
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
