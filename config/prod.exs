@@ -18,8 +18,11 @@ config :personal_website, PersonalWebsite.Repo,
 # which you should run after static files are built and
 # before starting your production server.
 config :personal_website, PersonalWebsiteWeb.Endpoint,
-  url: [scheme: "https", host: "agile-cliffs-57841", post: 443],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  http: [port: {:system, "PORT"}],
+  url: [host: "...", port: {:system, "PORT"}],
+  server: true,
+  root: ".",
+  version: Mix.Project.config[:version],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production

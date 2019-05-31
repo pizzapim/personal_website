@@ -1,0 +1,39 @@
+APP="personal_website"
+
+BUILD_HOST="35.180.63.124"
+BUILD_USER="ubuntu"
+BUILD_AT="/home/ubuntu/personal_website/builds"
+
+PRODUCTION_HOSTS="35.180.63.124"
+PRODUCTION_USER="ubuntu"
+DELIVER_TO="/home/ubuntu"
+
+pre_erlang_clean_compile() {
+  status "Installing NPM dependencies"
+  __sync_remote "
+    [ -f ~/.profile ] && source ~/.profile
+    set -e
+
+    cd '$BUILD_AT'
+    npm --prefix ./assets install $SILENCE
+  "
+
+  status "Building static files"
+  __sync_remote "
+    [ -f ~/.profile ] && source ~/.profile
+    set -e
+
+    cd '$BUILD_AT'
+    mkdir -p priv/static
+    npm --prefix ./assets run deploy $SILENCE
+  "
+
+  status "Running phoenix.digest"
+  __sync_remote "
+    [ -f ~/.profile ] && source ~/.profile
+    set -e
+
+    cd '$BUILD_AT'
+    APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phx.digest $SILENCE
+  "
+}
