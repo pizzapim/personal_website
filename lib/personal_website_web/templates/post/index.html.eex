@@ -2,12 +2,12 @@
 
 <div class="recent-posts">
   <%= for post <- @posts do %>
-    <div class="post-summary">
-      <h2><%= link(post.title, to: Routes.post_path(@conn, :show, Post.get_slug(post)), class: "summary-link") %></h2>
+    <div>
+      <h2><%= link(post.title, to: Routes.post_path(@conn, :show, Post.get_slug(post))) %></h2>
       <h5>Posted at: <%= post.inserted_at %></h5>
       <p>
-        <%= Post.get_first_article_paragraph(post) %>
-        <%= link("Read more", to: Routes.post_path(@conn, :show, Post.get_slug(post)), class: "summary-read-more") %>
+        <%= post.summary %>
+        <%= link("Read more", to: Routes.post_path(@conn, :show, Post.get_slug(post))) %>
       </p>
     </div>
   <% end %>

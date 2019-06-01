@@ -3,6 +3,8 @@
 <%= form_for @changeset, Routes.post_path(@conn, :create), fn f -> %>
   <%= label f, :title %>
   <%= text_input f, :title, placeholder: "Title" %>
+  <%= label f, :summary %>
+  <%= text_input f, :summary, placeholder: "Summary" %>
   <%= label f, :article %>
   <%= textarea f, :article, placeholder: "Article" %>
   <%= submit "Post" %>
