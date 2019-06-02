@@ -13,7 +13,7 @@ defmodule PersonalWebsiteWeb.Endpoint do
     at: "/",
     from: :personal_website,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts images js favicon.ico robots.txt .well-known)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

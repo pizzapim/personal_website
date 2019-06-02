@@ -25,6 +25,16 @@ config :personal_website, PersonalWebsiteWeb.Endpoint,
   root: ".",
   version: Mix.Project.config[:version],
   cache_static_manifest: "priv/static/cache_manifest.json"
+  # https: [
+  #   :inet6,
+  #   port: {:system, "PORT"},
+  #   cipher_suite: :strong
+  # ],
+  # url: [host: "...", port: {:system, "PORT"}],
+  # server: true,
+  # root: ".",
+  # version: Mix.Project.config[:version],
+  # cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
 config :logger, level: :info

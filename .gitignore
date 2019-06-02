@@ -35,4 +35,7 @@ npm-debug.log
 
 # Environmental variables in development
 config/dev.secret.exs
+
 .deliver/releases/
+
+/priv/cert/
