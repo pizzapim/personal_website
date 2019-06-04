@@ -23,7 +23,7 @@ config :personal_website, PersonalWebsiteWeb.Endpoint,
   server: true,
   root: ".",
   version: Mix.Project.config[:version],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
   https: [
     :inet6,
     port: {:system, "PORT"},
