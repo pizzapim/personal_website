@@ -29,7 +29,7 @@ config :personal_website, PersonalWebsiteWeb.Endpoint,
     port: {:system, "PORT"},
     cipher_suite: :strong,
     keyfile: System.get_env("SSL_KEY_FILE_PATH"),
-    cerfile: System.get_env("SSL_CERT_PATH")
+    certfile: System.get_env("SSL_CERT_PATH")
   ]
 
 # Do not print debug messages in production
