@@ -19,22 +19,18 @@ config :personal_website, PersonalWebsite.Repo,
 # which you should run after static files are built and
 # before starting your production server.
 config :personal_website, PersonalWebsiteWeb.Endpoint,
-  http: [port: {:system, "PORT"}],
   url: [host: "...", port: {:system, "PORT"}],
   server: true,
   root: ".",
   version: Mix.Project.config[:version],
   cache_static_manifest: "priv/static/cache_manifest.json"
-  # https: [
-  #   :inet6,
-  #   port: {:system, "PORT"},
-  #   cipher_suite: :strong
-  # ],
-  # url: [host: "...", port: {:system, "PORT"}],
-  # server: true,
-  # root: ".",
-  # version: Mix.Project.config[:version],
-  # cache_static_manifest: "priv/static/cache_manifest.json"
+  https: [
+    :inet6,
+    port: {:system, "PORT"},
+    cipher_suite: :strong,
+    keyfile: System.get_env("SSL_KEY_FILE_PATH"),
+    cerfile: System.get_env("SSL_CERT_PATH")
+  ]
 
 # Do not print debug messages in production
 config :logger, level: :info
