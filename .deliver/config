@@ -1,10 +1,10 @@
 APP="personal_website"
 
-BUILD_HOST="35.181.139.230"
+BUILD_HOST="35.180.63.124"
 BUILD_USER="ubuntu"
 BUILD_AT="/home/ubuntu/personal_website/builds"
 
-PRODUCTION_HOSTS="35.181.139.230"
+PRODUCTION_HOSTS="35.180.63.124"
 PRODUCTION_USER="ubuntu"
 DELIVER_TO="/home/ubuntu"
 

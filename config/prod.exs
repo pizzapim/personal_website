@@ -2,6 +2,12 @@ use Mix.Config
 
 config :personal_website, PersonalWebsite.Repo,
   url: System.get_env("DATABASE_URL")
+  # username: System.get_env("DATABASE_USERNAME"),
+  # password: System.get_env("DATABASE_PASSWORD"),
+  # database: System.get_env("DATABASE_NAME"),
+  # hostname: System.get_env("DATABASE_HOSTNAME"),
+  # show_sensitive_data_on_connection_error: false,
+  # pool_size: 18
 
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
@@ -14,14 +20,11 @@ config :personal_website, PersonalWebsite.Repo,
 # before starting your production server.
 config :personal_website, PersonalWebsiteWeb.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "..."],
-  cache_static_manifest: "priv/static/cache_manifest.json",
-  https: [
-    port: {:system, "PORTSSL"},
-    keyfile: System.get_env("SSL_KEY_FILE_PATH"),
-    certfile: System.get_env("SSL_CERT_PATH")
-  ],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]]
+  url: [host: "...", port: {:system, "PORT"}],
+  server: true,
+  root: ".",
+  version: Mix.Project.config[:version],
+  cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
 config :logger, level: :info

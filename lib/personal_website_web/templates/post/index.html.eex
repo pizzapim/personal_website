@@ -1,7 +1,5 @@
 <h1>Recent posts</h1>
 
-<p>Test; remove later</p>
-
 <div class="recent-posts">
   <%= for post <- @posts do %>
     <div>
