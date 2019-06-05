@@ -25,7 +25,8 @@ config :personal_website, PersonalWebsiteWeb.Endpoint,
     keyfile: System.get_env("SSL_KEY_FILE_PATH"),
     certfile: System.get_env("SSL_CERT_PATH")
   ],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]]
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  cipher_suite: :strong
 
 # Do not print debug messages in production
 config :logger, level: :info
