@@ -20,11 +20,17 @@ config :personal_website, PersonalWebsite.Repo,
 # before starting your production server.
 config :personal_website, PersonalWebsiteWeb.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "...", port: {:system, "PORT"}],
+  url: [host: "..."],
   server: true,
   root: ".",
   version: Mix.Project.config[:version],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  https: [
+    port: {:system, "PORTSSL"},
+    otp_app: :personal_website,
+    keyfile: System.get_env("SSL_KEY_FILE_PATH"),
+    certfile: System.get_env("SSL_CERT_PATH")
+  ]
 
 # Do not print debug messages in production
 config :logger, level: :info
