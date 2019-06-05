@@ -14,7 +14,7 @@ config :personal_website, PersonalWebsite.Repo,
 # before starting your production server.
 config :personal_website, PersonalWebsiteWeb.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "..."],
+  url: [host: System.get_env("HOST_NAME")],
   server: true,
   root: ".",
   version: Mix.Project.config[:version],
