@@ -4,13 +4,13 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Pim's Website</title>
+    <title><%= @view_module.get_title(@view_template, assigns) %></title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body>
     <nav>
       <a href="<%= Routes.post_path(Endpoint, :index) %>">&#x3C;root&#x3E;</a>
-      <p>Pim's Website</p>
+      <p>Pim's Thoughts</p>
       <a href="<%= Routes.page_path(Endpoint, :about) %>">&#x3C;about&#x3E;</a>
     </nav>
     <main role="main" class="container">
