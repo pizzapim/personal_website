@@ -17,7 +17,7 @@ I'm a developer from the Netherlands. Right now, I'm doing a bachelor's degree C
 <h2>Interests</h2>
 
 <p>
-My interests lie mainly in programming and video games. I've been programming in Ruby on Rails for 3 years, semi-professionally (but this site is written in Elixir!) Other experience includes PHP (good old days :)), and recently Phoenix. After touching Erlang at university, I got interested in Elixir too, and it hasn't been disappointing!
+My interests lie mainly in programming and video games. I've been programming in Ruby on Rails for 3 years, semi-professionally (but this site is written in Elixir!) Other experience includes PHP (good old days :)), and recently Phoenix. After touching Erlang at university, I got interested in Elixir too, and so far it hasn't been disappointing!
 </p>
 
 <p>
@@ -42,5 +42,5 @@ In terms of video games, I play all sorts of genres. From platformers to CRPGs, 
 <h2>How is this site written?</h2>
 
 <p>
-This site is written in Elixir, using the <a href="https://phoenixframework.org/">Phoenix framework</a>.
+This site is written in Elixir, using the <a href="https://phoenixframework.org/">Phoenix framework</a>. Currently it's deployed on an Amazon EC2 instance and its source can be found <a href="https://github.com/pizzapim/personal_website">here (GitHub)</a>.
 </p>
