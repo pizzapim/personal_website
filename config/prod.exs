@@ -23,7 +23,8 @@ config :personal_website, PersonalWebsiteWeb.Endpoint,
     port: {:system, "PORTSSL"},
     otp_app: :personal_website,
     keyfile: System.get_env("SSL_KEY_FILE_PATH"),
-    certfile: System.get_env("SSL_CERT_PATH")
+    certfile: System.get_env("SSL_CERT_PATH"),
+    cacertfile: System.get_env("SSL_INTERMDTE_CERT_PATH"),
   ],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cipher_suite: :strong
