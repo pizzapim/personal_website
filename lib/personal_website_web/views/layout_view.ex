@@ -3,7 +3,7 @@ defmodule PersonalWebsiteWeb.LayoutView do
   alias PersonalWebsiteWeb.Endpoint
 
   def get_title(title) do
-    title <> " | " <> get_title
+    title <> " | " <> get_title()
   end
 
   def get_title do

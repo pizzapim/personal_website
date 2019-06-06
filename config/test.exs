@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :personal_website, PersonalWebsite.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "root",
   database: "personal_website_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

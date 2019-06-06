@@ -1,8 +1,8 @@
 defmodule PersonalWebsiteWeb.PageControllerTest do
   use PersonalWebsiteWeb.ConnCase
 
-  test "GET /", %{conn: conn} do
-    conn = get(conn, "/")
-    assert html_response(conn, 200) =~ "Welcome to Phoenix!"
+  test "GET /about", %{conn: conn} do
+    conn = get(conn, "/about")
+    assert html_response(conn, 200) =~ ~r/welcome to my website/i
   end
 end

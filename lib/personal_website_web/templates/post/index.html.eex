@@ -1,14 +1,18 @@
 <h1>Recent posts</h1>
 
 <div class="recent-posts">
-  <%= for post <- @posts do %>
-    <div>
-      <h2><%= link(post.title, to: Routes.post_path(@conn, :show, Post.get_slug(post))) %></h2>
-      <h5>Posted at: <%= post.inserted_at %></h5>
-      <p>
-        <%= post.summary %>
-        <%= link("Read more", to: Routes.post_path(@conn, :show, Post.get_slug(post))) %>
-      </p>
-    </div>
+  <%= if length(@posts) > 0 do %>
+    <%= for post <- @posts do %>
+      <div>
+        <h2><%= link(post.title, to: Routes.post_path(@conn, :show, Post.get_slug(post))) %></h2>
+        <h5>Posted at: <%= post.inserted_at %></h5>
+        <p>
+          <%= post.summary %>
+          <%= link("Read more", to: Routes.post_path(@conn, :show, Post.get_slug(post))) %>
+        </p>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No posts yet!</p>
   <% end %>
 </div>
