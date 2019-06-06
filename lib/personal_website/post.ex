@@ -21,6 +21,7 @@ defmodule PersonalWebsite.Post do
     title = post.title
     |> String.downcase
     |> String.replace(~r/[^a-z\d\s]/, "")
+    |> String.replace_suffix(" ", "")
     |> String.replace(~r/\s/, "-")
 
     Integer.to_string(post.id) <> "-" <> title
