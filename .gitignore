@@ -38,3 +38,6 @@ config/dev.secret.exs
 .deliver/releases/
 
 /priv/cert/
+
+*.swp
+*.swo
