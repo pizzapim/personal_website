@@ -1,12 +1,12 @@
 APP="personal_website"
 
-BUILD_HOST="35.181.139.230"
-BUILD_USER="ubuntu"
-BUILD_AT="/home/ubuntu/personal_website/builds"
+BUILD_HOST="debian.lan"
+BUILD_USER="root"
+BUILD_AT="/root/personal_website/builds"
 
-PRODUCTION_HOSTS="35.181.139.230"
-PRODUCTION_USER="ubuntu"
-DELIVER_TO="/home/ubuntu"
+PRODUCTION_HOSTS="debian.lan"
+PRODUCTION_USER="root"
+DELIVER_TO="/root"
 
 pre_erlang_clean_compile() {
   status "Installing NPM dependencies"
