@@ -1,0 +1,22 @@
+# How to enable the service:
+# ln -s /root/personal_website/builds/personal_website.service /etc/systemd/system/personal_website.service
+# systemctl enable personal_website.service
+# systemctl daemon-reload
+
+[Unit]
+Description=Start personal website application
+After=network.target
+
+[Service]
+User=root
+Group=root
+Restart=on-failure
+
+Environment=HOME=/root/personal_website
+EnvironmentFile=/root/personal_website.env
+
+ExecStart= /root/personal_website/bin/personal_website foreground
+ExecStop= /root/personal_website/bin/personal_website stop
+
+[Install]
+WantedBy=multi-user.target
