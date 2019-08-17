@@ -9,7 +9,7 @@ config :personal_website, PersonalWebsiteWeb.Endpoint,
   root: ".",
   version: Mix.Project.config[:version],
   cache_static_manifest: "priv/static/cache_manifest.json",
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  force_ssl: [rewrite_on: [:x_forwarded_proto], hsts: true, host: nil],
   cipher_suite: :strong
 
 # Do not print debug messages in production
