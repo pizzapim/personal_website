@@ -8,6 +8,19 @@ PRODUCTION_HOSTS="debian.lan"
 PRODUCTION_USER="root"
 DELIVER_TO="/root"
 
+post_start_deployed_release() {
+  status "Installing NGINX configuration"
+  __sync_remote "
+    [ -f ~/.profile ] && source ~/.profile
+
+    cd '$BUILD_AT'
+    for filename in nginx/*; do
+      [ -e "$filename" ] || continue
+      ln -fs $BUILD_AT/$filename /etc/nginx/sites-enabled/$(basename $filename)
+    done
+  "
+}
+
 pre_erlang_clean_compile() {
   status "Installing NPM dependencies"
   __sync_remote "
