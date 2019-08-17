@@ -11,13 +11,15 @@ DELIVER_TO="/root"
 post_start_deployed_release() {
   status "Installing NGINX configuration"
   __sync_remote "
+    set -e
     [ -f ~/.profile ] && source ~/.profile
 
     cd '$BUILD_AT'
-    for filename in nginx/*; do
-      [ -e "$filename" ] || continue
-      ln -fs $BUILD_AT/$filename /etc/nginx/sites-enabled/$(basename $filename)
-    done
+    rm -rf /etc/nginx/sites-enabled
+    ln -sf $BUILD_AT/nginx /etc/nginx/sites-enabled
+
+    nginx -t
+    service nginx reload
   "
 }
 
