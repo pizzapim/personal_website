@@ -1,4 +1,4 @@
-<h1>Recent posts</h1>
+<h1>Recent <%= @type %></h1>
 
 <div class="recent-posts">
   <%= if length(@posts) > 0 do %>
@@ -13,6 +13,6 @@
       </div>
     <% end %>
   <% else %>
-    <p>No posts yet!</p>
+    <p>No <%= @type %> yet!</p>
   <% end %>
 </div>

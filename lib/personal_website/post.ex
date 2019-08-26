@@ -6,7 +6,7 @@ defmodule PersonalWebsite.Post do
     field :article, :string
     field :title, :string
     field :summary, :string
-    field :tags, {:array, :string}
+    field :tags, PersonalWebsite.Tags
 
     timestamps()
   end
@@ -14,8 +14,8 @@ defmodule PersonalWebsite.Post do
   @doc false
   def changeset(post, attrs \\ %{}) do
     post
-    |> cast(attrs, [:title, :article, :summary])
-    |> validate_required([:title, :article, :summary])
+    |> cast(attrs, [:title, :article, :summary, :tags])
+    |> validate_required([:title, :article, :summary, :tags])
   end
 
   def get_slug(post) do

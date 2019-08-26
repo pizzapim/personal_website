@@ -10,7 +10,7 @@
   <body>
     <nav>
       <a href="<%= Routes.post_path(Endpoint, :index) %>">Pim's Thoughts</a>
-      <div id="nav-links">
+      <div>
         <a href="<%= Routes.post_path(Endpoint, :project_index) %>">&#x3C;projects&#x3E;</a>
         <a href="<%= Routes.page_path(Endpoint, :about) %>">&#x3C;about&#x3E;</a>
       </div>
@@ -18,7 +18,7 @@
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= render @view_module, @view_template, assigns %>
+      <%= render(@view_module, @view_template, assigns) %>
     </main>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>

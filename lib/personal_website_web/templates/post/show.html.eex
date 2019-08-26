@@ -1,5 +1,6 @@
 <h1><%= @post.title %></h1>
 <h5>Posted at: <%= @post.inserted_at %></h5>
+<h5>Tags: <%= Tags.display(@post.tags) %></h5>
 
 <%= if is_admin?(@conn) do %>
   <%= link("Edit", to: Routes.post_path(@conn, :edit, @post)) %>

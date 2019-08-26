@@ -5,6 +5,8 @@
   <%= text_input f, :title, placeholder: "Title" %>
   <%= label f, :summary %>
   <%= text_input f, :summary, placeholder: "Summary" %>
+  <%= label f, :tags %>
+  <%= text_input f, :tags, placeholder: "Tags" %>
   <%= label f, :article %>
   <%= textarea f, :article, placeholder: "Article" %>
   <%= submit "Post" %>

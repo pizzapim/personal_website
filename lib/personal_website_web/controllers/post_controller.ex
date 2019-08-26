@@ -8,14 +8,24 @@ defmodule PersonalWebsiteWeb.PostController do
 
   def index(conn, _params) do
     posts =
-      Repo.all(from p in Post, where: "project" not in p.tags, order_by: [desc: p.inserted_at])
+      Repo.all(
+        from p in Post,
+          where: "project" not in type(p.tags, {:array, :string}),
+          order_by: [desc: p.inserted_at]
+      )
 
-    render(conn, :index, posts: posts)
+    render(conn, :index, posts: posts, type: "posts")
   end
 
   def project_index(conn, _params) do
-    posts = Repo.all(from p in Post, where: "project" in p.tags, order_by: [desc: p.inserted_at])
-    render(conn, :project_index, posts: posts)
+    posts =
+      Repo.all(
+        from p in Post,
+          where: "project" in type(p.tags, {:array, :string}),
+          order_by: [desc: p.inserted_at]
+      )
+
+    render(conn, :index, posts: posts, type: "projects")
   end
 
   def show(conn, %{"post_slug" => post_slug}) do

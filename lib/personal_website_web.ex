@@ -46,6 +46,8 @@ defmodule PersonalWebsiteWeb do
       def is_admin?(conn) do
         Plug.Conn.get_session(conn, "is_admin")
       end
+
+      alias PersonalWebsite.Tags
     end
   end
 
