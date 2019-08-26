@@ -4,7 +4,7 @@ defmodule PersonalWebsiteWeb.PostController do
   alias PersonalWebsite.{Repo, Post}
 
   plug PersonalWebsiteWeb.Plugs.AuthenticateAdmin
-       when action not in [:show, :index]
+       when action not in [:show, :index, :project_index]
 
   def index(conn, _params) do
     posts =
