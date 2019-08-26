@@ -14,7 +14,8 @@ defmodule PersonalWebsiteWeb.PostTest do
     params = %{
       "title" => "test title 123 **",
       "summary" => "test summary",
-      "article" => "test article"
+      "article" => "test article",
+      "tags" => "test, tags"
     }
 
     {:ok, post} = Repo.insert(Post.changeset(%Post{}, params))

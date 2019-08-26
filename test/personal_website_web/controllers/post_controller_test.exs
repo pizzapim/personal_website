@@ -10,7 +10,8 @@ defmodule PersonalWebsiteWeb.PostControllerTest do
       post = %{
         "title" => "test title",
         "summary" => "test summary",
-        "article" => "test article"
+        "article" => "test article",
+        "tags" => "test, tags"
       }
 
       Repo.insert(Post.changeset(%Post{}, post))
