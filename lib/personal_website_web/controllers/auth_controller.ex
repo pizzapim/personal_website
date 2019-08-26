@@ -6,7 +6,7 @@ defmodule PersonalWebsiteWeb.AuthController do
   end
 
   def create(conn, %{"password" => password}) do
-    if Argon2.verify_pass(password, System.get_env("ADMIN_PASS_HASH")) do
+    if password() && Argon2.verify_pass(password, password()) do
       conn
       |> put_session("is_admin", true)
       |> redirect(to: "/")
@@ -19,5 +19,9 @@ defmodule PersonalWebsiteWeb.AuthController do
     conn
     |> delete_session("is_admin")
     |> redirect(to: "/")
+  end
+
+  defp password do
+    System.get_env("ADMIN_PASS_HASH")
   end
 end
