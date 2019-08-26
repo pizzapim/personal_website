@@ -13,16 +13,16 @@ secret_key_base =
     """
 
 config :personal_website, PersonalWebsiteWeb.Endpoint,
-  http: [:inet6, port: {:system, "PORT"}],
+  http: [port: {:system, "PORT"}],
   secret_key_base: secret_key_base,
-  url: [host: System.get_env("HOST_NAME")],
-  https: [
-    port: {:system, "PORTSSL"},
-    otp_app: :personal_website,
-    keyfile: System.get_env("SSL_KEY_FILE_PATH"),
-    certfile: System.get_env("SSL_CERT_PATH"),
-    cacertfile: System.get_env("SSL_INTERMDTE_CERT_PATH"),
-  ]
+  url: [host: System.get_env("HOST_NAME")]
+  # https: [
+  #   port: {:system, "PORTSSL"},
+  #   otp_app: :personal_website,
+  #   keyfile: System.get_env("SSL_KEY_FILE_PATH"),
+  #   certfile: System.get_env("SSL_CERT_PATH"),
+  #   cacertfile: System.get_env("SSL_INTERMDTE_CERT_PATH"),
+  # ]
 
 config :personal_website, PersonalWebsite.Repo,
   username: System.get_env("DB_USER"),
