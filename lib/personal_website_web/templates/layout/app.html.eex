@@ -9,9 +9,11 @@
   </head>
   <body>
     <nav>
-      <a href="<%= Routes.post_path(Endpoint, :index) %>">&#x3C;root&#x3E;</a>
-      <p>Pim's Thoughts</p>
-      <a href="<%= Routes.page_path(Endpoint, :about) %>">&#x3C;about&#x3E;</a>
+      <a href="<%= Routes.post_path(Endpoint, :index) %>">Pim's Thoughts</a>
+      <div id="nav-links">
+        <a href="<%= Routes.post_path(Endpoint, :project_index) %>">&#x3C;projects&#x3E;</a>
+        <a href="<%= Routes.page_path(Endpoint, :about) %>">&#x3C;about&#x3E;</a>
+      </div>
     </nav>
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

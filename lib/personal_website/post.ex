@@ -6,6 +6,7 @@ defmodule PersonalWebsite.Post do
     field :article, :string
     field :title, :string
     field :summary, :string
+    field :tags, {:array, :string}
 
     timestamps()
   end

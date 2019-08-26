@@ -4,11 +4,18 @@ defmodule PersonalWebsiteWeb.PostController do
   alias PersonalWebsite.{Repo, Post}
 
   plug PersonalWebsiteWeb.Plugs.AuthenticateAdmin
-    when action not in [:show, :index]
+       when action not in [:show, :index]
 
   def index(conn, _params) do
-    posts = Repo.all(from p in Post, order_by: [desc: p.inserted_at])
+    posts =
+      Repo.all(from p in Post, where: "project" not in p.tags, order_by: [desc: p.inserted_at])
+
     render(conn, :index, posts: posts)
+  end
+
+  def project_index(conn, _params) do
+    posts = Repo.all(from p in Post, where: "project" in p.tags, order_by: [desc: p.inserted_at])
+    render(conn, :project_index, posts: posts)
   end
 
   def show(conn, %{"post_slug" => post_slug}) do
@@ -23,9 +30,11 @@ defmodule PersonalWebsiteWeb.PostController do
 
   def create(conn, %{"post" => post_params}) do
     changeset = Post.changeset(%Post{}, post_params)
+
     case Repo.insert(changeset) do
       {:ok, schema} ->
         render(conn, :show, post: schema)
+
       {:error, _changeset} ->
         render(conn, :new, changeset: changeset)
     end
@@ -40,9 +49,11 @@ defmodule PersonalWebsiteWeb.PostController do
   def update(conn, %{"post_slug" => post_slug, "post" => post_params}) do
     post = find_post(conn, post_slug)
     changeset = Post.changeset(post, post_params)
+
     case Repo.update(changeset) do
       {:ok, schema} ->
         render(conn, :show, post: schema)
+
       {:error, changeset} ->
         render(conn, :edit, changeset: changeset, post: post)
     end
@@ -55,9 +66,10 @@ defmodule PersonalWebsiteWeb.PostController do
   end
 
   defp find_post(conn, post_slug) do
-    post = if post_id = get_post_id_from_slug(post_slug) do
-      Repo.one(from p in Post, where: p.id == ^post_id)
-    end
+    post =
+      if post_id = get_post_id_from_slug(post_slug) do
+        Repo.one(from p in Post, where: p.id == ^post_id)
+      end
 
     if post do
       post

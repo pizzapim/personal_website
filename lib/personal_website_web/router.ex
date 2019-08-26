@@ -31,6 +31,12 @@ defmodule PersonalWebsiteWeb.Router do
     delete "/:post_slug", PostController, :destroy
   end
 
+  scope "/projects", PersonalWebsiteWeb do
+    pipe_through :browser
+
+    get "/", PostController, :project_index
+  end
+
   scope "/auth", PersonalWebsiteWeb do
     pipe_through :browser
 
