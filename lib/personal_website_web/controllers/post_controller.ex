@@ -7,12 +7,7 @@ defmodule PersonalWebsiteWeb.PostController do
        when action not in [:show, :index, :project_index]
 
   def index(conn, _params) do
-    posts =
-      Repo.all(
-        from p in Post,
-          where: "project" not in type(p.tags, {:array, :string}),
-          order_by: [desc: p.inserted_at]
-      )
+    posts = Repo.all(from p in Post, order_by: [desc: p.inserted_at])
 
     render(conn, :index, posts: posts, type: "posts")
   end
