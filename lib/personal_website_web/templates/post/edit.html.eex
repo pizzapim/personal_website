@@ -1,8 +1,8 @@
 <h1>Edit post</h1>
 
-<%= link("Delete post", to: Routes.post_path(@conn, :delete, @post), method: :delete) %>
+<%= link("Delete post", to: LayoutView.post_path(@conn, :delete, @post), method: :delete) %>
 
-<%= form_for @changeset, Routes.post_path(@conn, :update, @post), fn f -> %>
+<%= form_for @changeset, LayoutView.post_path(@conn, :update, @post), fn f -> %>
   <%= label f, :title %>
   <%= text_input f, :title, placeholder: "Title" %>
   <%= label f, :summary %>

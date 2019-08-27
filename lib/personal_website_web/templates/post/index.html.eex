@@ -4,11 +4,11 @@
   <%= if length(@posts) > 0 do %>
     <%= for post <- @posts do %>
       <div>
-        <h2><%= link(post.title, to: Routes.post_path(@conn, :show, Post.get_slug(post))) %></h2>
+        <h2><%= link(post.title, to: LayoutView.post_path(@conn, :show, Post.get_slug(post))) %></h2>
         <h5>Posted at: <%= post.inserted_at %></h5>
         <p>
           <%= post.summary %>
-          <%= link("Read more", to: Routes.post_path(@conn, :show, Post.get_slug(post))) %>
+          <%= link("Read more", to: LayoutView.post_path(@conn, :show, Post.get_slug(post))) %>
         </p>
       </div>
     <% end %>

@@ -5,7 +5,7 @@
 <% end %>
 
 <%= if is_admin?(@conn) do %>
-  <%= link("Edit", to: Routes.post_path(@conn, :edit, @post)) %>
+  <%= link("Edit", to: LayoutView.post_path(@conn, :edit, @post)) %>
 <% end %>
 
 <%= raw @post.article %>
