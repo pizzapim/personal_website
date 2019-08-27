@@ -1,17 +1,7 @@
 server {
   listen 80;
-  server_name geokunis2.nl;
-  location / {
-    proxy_pass http://192.168.30.2;
-  }
-
-  location /socket {
-        proxy_pass http://192.168.30.2;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection $http_connection;
-        proxy_set_header Origin '';
-   }
+  server_name geokunis2.nl www.geokunis2.nl;
+  return 301 https://$host$request_uri;
 }
 
 server {
