@@ -6,13 +6,7 @@ defmodule PersonalWebsiteWeb.PostController do
   plug PersonalWebsiteWeb.Plugs.AuthenticateAdmin
        when action not in [:show, :index, :project_index]
 
-  def index(conn, _params) do
-    posts = Repo.all(from p in Post, order_by: [desc: p.inserted_at])
-
-    render(conn, :index, posts: posts, type: "posts")
-  end
-
-  def project_index(conn, _params) do
+  def index(%Plug.Conn{path_info: path} = conn, _params) when hd(path) == "projects" do
     posts =
       Repo.all(
         from p in Post,
@@ -21,6 +15,12 @@ defmodule PersonalWebsiteWeb.PostController do
       )
 
     render(conn, :index, posts: posts, type: "projects")
+  end
+
+  def index(conn, _params) do
+    posts = Repo.all(from p in Post, order_by: [desc: p.inserted_at])
+
+    render(conn, :index, posts: posts, type: "posts")
   end
 
   def show(conn, %{"post_slug" => post_slug}) do
@@ -64,7 +64,7 @@ defmodule PersonalWebsiteWeb.PostController do
     end
   end
 
-  def destroy(conn, %{"post_slug" => post_slug}) do
+  def delete(conn, %{"post_slug" => post_slug}) do
     post_id = get_post_id_from_slug(post_slug)
     Repo.delete_all(from p in Post, where: p.id == ^post_id)
     redirect(conn, to: "/")

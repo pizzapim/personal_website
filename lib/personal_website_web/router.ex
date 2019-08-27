@@ -9,39 +9,18 @@ defmodule PersonalWebsiteWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
-
   scope "/", PersonalWebsiteWeb do
     pipe_through :browser
 
     get "/", PostController, :index
     get "/about", PageController, :about
-  end
 
-  scope "/post", PersonalWebsiteWeb do
-    pipe_through :browser
+    resources "/posts", PostController, param: "post_slug", except: [:index]
 
-    post "/", PostController, :create
-    get "/new", PostController, :new
-    get "/:post_slug", PostController, :show
-    get "/:post_slug/edit", PostController, :edit
-    put "/:post_slug", PostController, :update
-    delete "/:post_slug", PostController, :destroy
-  end
+    resources "/projects", PostController, param: "post_slug", name: "project"
 
-  scope "/projects", PersonalWebsiteWeb do
-    pipe_through :browser
-
-    get "/", PostController, :project_index
-  end
-
-  scope "/auth", PersonalWebsiteWeb do
-    pipe_through :browser
-
-    get "/", AuthController, :new
-    post "/", AuthController, :create
-    delete "/", AuthController, :destroy
+    get "/auth", AuthController, :new
+    post "/auth", AuthController, :create
+    delete "/auth", AuthController, :destroy
   end
 end

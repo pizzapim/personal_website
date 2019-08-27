@@ -9,10 +9,10 @@
   </head>
   <body>
     <nav>
-      <a href="<%= Routes.post_path(Endpoint, :index) %>">Pim's Thoughts</a>
+      <a href="<%= Routes.post_path(@conn, :index) %>">Pim's Thoughts</a>
       <div>
-        <a href="<%= Routes.post_path(Endpoint, :project_index) %>">&#x3C;projects&#x3E;</a>
-        <a href="<%= Routes.page_path(Endpoint, :about) %>">&#x3C;about&#x3E;</a>
+        <a href="<%= Routes.project_path(@conn, :index) %>">&#x3C;projects&#x3E;</a>
+        <a href="<%= Routes.page_path(@conn, :about) %>">&#x3C;about&#x3E;</a>
       </div>
     </nav>
     <main role="main" class="container">
