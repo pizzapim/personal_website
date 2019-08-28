@@ -4,6 +4,7 @@ defmodule PersonalWebsite.Tags do
 
   def cast(str) when is_binary(str) do
     str
+    |> String.downcase()
     |> String.replace(~r/\s/, "")
     |> String.split(",")
     |> cast
