@@ -8,6 +8,13 @@ PRODUCTION_HOSTS="debian.lan"
 PRODUCTION_USER="root"
 DELIVER_TO="/root"
 
+pre_init_app_remotely() {
+  status "Mix test"
+  set -e
+  mix test
+  set +e
+}
+
 post_start_deployed_release() {
   status "Installing NGINX configuration"
   __sync_remote "
