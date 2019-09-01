@@ -28,6 +28,12 @@ post_start_deployed_release() {
     nginx -t
     service nginx reload
   "
+  status "Configuring cron job for automated TLS certificate renewals"
+  __sync_remote "
+     crontab -r
+     set -e
+     (crontab -l 2>/dev/null; echo "0 2 * * 3 /usr/bin/certbot renew ; /bin/systemctl reload nginx") | crontab -
+  "   
 }
 
 pre_erlang_clean_compile() {
