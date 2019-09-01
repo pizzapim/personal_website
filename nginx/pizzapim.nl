@@ -13,8 +13,8 @@ server {
     proxy_pass http://localhost:81;
   }
 
-  ssl_certificate /etc/letsencrypt/live/pizzapim.nl-0003/fullchain.pem;
-  ssl_certificate_key /etc/letsencrypt/live/pizzapim.nl-0003/privkey.pem;
+  ssl_certificate /etc/letsencrypt/live/pizzapim.nl/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/pizzapim.nl/privkey.pem;
   ssl_session_timeout 1d;
   ssl_session_cache shared:MozSSL:10m;  # about 40000 sessions
   ssl_session_tickets off;
@@ -26,9 +26,9 @@ server {
     # OCSP stapling
   ssl_stapling on;
   ssl_stapling_verify on;
-  ssl_dhparam /etc/letsencrypt/live/pizzapim.nl-0003/dhparam.pem;
+  ssl_dhparam /etc/letsencrypt/live/pizzapim.nl/dhparam.pem;
     # verify chain of trust of OCSP response using Root CA and Intermediate certs
-    ssl_trusted_certificate /etc/letsencrypt/live/pizzapim.nl-0003/fullchain.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/pizzapim.nl/fullchain.pem;
 
     # replace with the IP address of your resolver
   resolver 1.1.1.1;
