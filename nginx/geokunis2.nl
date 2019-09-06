@@ -20,6 +20,10 @@ server {
         proxy_set_header Origin '';
    }
 
+  location /.well-known {
+        root /var/www/acme-challenge;
+  }
+
   ssl_certificate /etc/letsencrypt/live/geokunis2.nl/fullchain.pem;
   ssl_certificate_key /etc/letsencrypt/live/geokunis2.nl/privkey.pem;
   ssl_session_timeout 1d;
