@@ -13,6 +13,10 @@ server {
     proxy_pass http://localhost:81;
   }
 
+  location /.well-known {
+        root /var/www/acme-challenge;
+  }
+
   ssl_certificate /etc/letsencrypt/live/pizzapim.nl/fullchain.pem;
   ssl_certificate_key /etc/letsencrypt/live/pizzapim.nl/privkey.pem;
   ssl_session_timeout 1d;
