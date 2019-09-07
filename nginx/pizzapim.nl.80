@@ -3,4 +3,6 @@ server {
   server_name pizzapim.nl www.pizzapim.nl;
   add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
   return 301 https://$host$request_uri;
+  access_log /var/log/nginx/pizzapim-80-access.log;
+  error_log /var/log/nginx/pizzapim-80-error.log;
 }
