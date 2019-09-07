@@ -3,7 +3,7 @@ server {
   server_name pizzapim.nl www.pizzapim.nl;
   add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
   location / {
-    proxy_pass http://localhost:81;
+    proxy_pass http://127.0.0.1:81;
   }
 
   location /.well-known {
@@ -26,5 +26,8 @@ server {
   ssl_dhparam /etc/letsencrypt/live/pizzapim.nl/dhparam.pem;
   # verify chain of trust of OCSP response using Root CA and Intermediate certs
   ssl_trusted_certificate /etc/letsencrypt/live/pizzapim.nl/fullchain.pem;
+  resolver 1.1.1.1;
 
+  access_log /var/log/nginx/pizzapim-443-access.log;
+  error_log /var/log/nginx/pizzapim-443-error.log;
 }
