@@ -2,4 +2,6 @@ server {
   listen 80;
   server_name geokunis2.nl www.geokunis2.nl;
   return 301 https://$host$request_uri;
+  access_log /var/log/nginx/geokunis2-80-access.log;
+  error_log /var/log/nginx/geokunis2-80-error.log;
 }
