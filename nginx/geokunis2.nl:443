@@ -1,6 +1,6 @@
 server {
   listen 443 ssl;
-  server_name geokunis2.nl;
+  server_name geokunis2.nl www.geokunis2.nl;
   location / {
     proxy_pass http://192.168.30.2;
   }
