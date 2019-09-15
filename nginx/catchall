@@ -1,8 +1,8 @@
 server {
-  listen 80 default;
-    server_name  _;
-    location / {
-    root /var/www/html;
-    index index.html index.htm;
-  }
+  listen 80 default_server;
+  listen 443 ssl  http2 default_server;
+  server_name  _;
+  ssl_certificate /root/cert.pem;
+  ssl_certificate_key /root/key.pem;
+  return 444;
 }
