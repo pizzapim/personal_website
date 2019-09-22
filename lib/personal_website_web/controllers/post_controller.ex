@@ -24,8 +24,12 @@ defmodule PersonalWebsiteWeb.PostController do
   end
 
   def show(conn, %{"post_slug" => post_slug}) do
-    post = find_post(conn, post_slug)
-    render(conn, :show, post: post)
+    post = find_post(post_slug)
+    if post do
+      render(conn, :show, post: post)
+    else
+      not_found(conn)
+    end
   end
 
   def new(conn, _opts) do
@@ -46,21 +50,29 @@ defmodule PersonalWebsiteWeb.PostController do
   end
 
   def edit(conn, %{"post_slug" => post_slug}) do
-    post = find_post(conn, post_slug)
-    changeset = Post.changeset(post)
-    render(conn, :edit, changeset: changeset, post: post)
+    post = find_post(post_slug)
+    if post do
+      changeset = Post.changeset(post)
+      render(conn, :edit, changeset: changeset, post: post)
+    else
+      not_found(conn)
+    end
   end
 
   def update(conn, %{"post_slug" => post_slug, "post" => post_params}) do
-    post = find_post(conn, post_slug)
-    changeset = Post.changeset(post, post_params)
+    post = find_post(post_slug)
+    if post do
+      changeset = Post.changeset(post, post_params)
 
-    case Repo.update(changeset) do
-      {:ok, schema} ->
-        render(conn, :show, post: schema)
+      case Repo.update(changeset) do
+        {:ok, schema} ->
+          render(conn, :show, post: schema)
 
-      {:error, changeset} ->
-        render(conn, :edit, changeset: changeset, post: post)
+        {:error, changeset} ->
+          render(conn, :edit, changeset: changeset, post: post)
+      end
+    else
+      not_found(conn)
     end
   end
 
@@ -70,19 +82,9 @@ defmodule PersonalWebsiteWeb.PostController do
     redirect(conn, to: "/")
   end
 
-  defp find_post(conn, post_slug) do
-    post =
-      if post_id = get_post_id_from_slug(post_slug) do
-        Repo.one(from p in Post, where: p.id == ^post_id)
-      end
-
-    if post do
-      post
-    else
-      conn
-      |> put_status(:not_found)
-      |> put_view(PersonalWebsiteWeb.ErrorView)
-      |> render("404.html")
+  defp find_post(post_slug) do
+    if post_id = get_post_id_from_slug(post_slug) do
+      Repo.one(from p in Post, where: p.id == ^post_id)
     end
   end
 
@@ -93,5 +95,12 @@ defmodule PersonalWebsiteWeb.PostController do
       {post_id, _rest} -> post_id
       :error -> false
     end
+  end
+
+  defp not_found(conn) do
+    conn
+    |> put_status(:not_found)
+    |> put_view(PersonalWebsiteWeb.ErrorView)
+    |> render("404.html")
   end
 end
