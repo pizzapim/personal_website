@@ -4,7 +4,7 @@ use Mix.Config
 config :personal_website, PersonalWebsite.Repo,
   username: "postgres",
   password: "root",
-  database: "personal_website",
+  database: "personal_website_dev",
   hostname: "database",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -74,5 +74,3 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
-
-import_config "dev.secret.exs"

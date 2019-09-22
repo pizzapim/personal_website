@@ -7,11 +7,12 @@ services:
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: personal_website
+      POSTGRES_DB: personal_website_dev
     volumes:
       - ./docker/data/database:/var/lib/postgres/data
+    container_name: personal_website_database_dev
 
-  web:
+  web_dev:
     build:
       context: .
       dockerfile: Dockerfile
@@ -32,3 +33,4 @@ services:
     command: sleep infinity
     depends_on:
       - database
+    container_name: personal_website_web_dev
