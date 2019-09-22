@@ -74,3 +74,5 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+config :personal_website, :admin_pass_hash, System.get_env("ADMIN_PASS_HASH")
