@@ -41,3 +41,4 @@ config/dev.secret.exs
 
 *.swp
 *.swo
+.env

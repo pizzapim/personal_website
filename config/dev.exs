@@ -75,9 +75,4 @@ config :phoenix, :stacktrace_depth, 20
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
 
-System.put_env(
-  "ADMIN_PASS_HASH",
-  "$argon2id$v=19$m=131072,t=8,p=4$rkS7HED9wDlRPgzWvcaTEg$zlFlgKqTV3ZoeWOVQRqxgAJj13D7OIDSUB25J4QYpgc"
-)
-
 import_config "dev.secret.exs"

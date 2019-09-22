@@ -22,6 +22,6 @@ defmodule PersonalWebsiteWeb.AuthController do
   end
 
   defp password do
-    System.get_env("ADMIN_PASS_HASH")
+    Application.get_env(:personal_website, :admin_pass_hash)
   end
 end

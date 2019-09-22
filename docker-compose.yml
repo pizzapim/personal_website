@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  database:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: personal_website
+
+  web:
+    image: personal-website
+    restart: always
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    environment:
+      APP_PORT: ${APP_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      APP_HOSTNAME: ${APP_HOSTNAME}
+      ADMIN_PASS_HASH: ${ADMIN_PASS_HASH}
+    depends_on:
+      - database
