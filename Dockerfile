@@ -1,55 +1,14 @@
-# ---- Build Stage ----
-FROM elixir:alpine AS app_builder
+FROM elixir:latest
 
-# Set environment variables for building the application
-ENV MIX_ENV=prod \
-    TEST=1 \
-    LANG=C.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+ENV LC_ALL=en_US.UTF-8
 
-RUN apk add --update git nodejs-npm build-base && \
-    rm -rf /var/cache/apk/*
-
-# Install hex and rebar
-RUN mix local.hex --force && \
-    mix local.rebar --force
-
-# Create the application build directory
-RUN mkdir /app
-WORKDIR /app
-
-# Copy over all the necessary application files and directories
-COPY config ./config
-COPY lib ./lib
-COPY priv ./priv
-COPY mix.exs .
-COPY mix.lock .
-COPY assets ./assets
-
-# Fetch the application dependencies and build the application
-RUN mix deps.get
-RUN mix deps.compile
-RUN cd assets && npm install && npm run deploy
-RUN mix phx.digest
-RUN mix release
-
-# ---- Application Stage ----
-FROM alpine:3.9 AS app
-
-ENV LANG=C.UTF-8
-
-# Install openssl
-RUN apk add --update openssl ncurses-libs postgresql-client && \
-    rm -rf /var/cache/apk/*
-
-# Copy over the build artifact from the previous step and create a non root user
-RUN adduser -D -h /home/app app
-WORKDIR /home/app
-COPY --from=app_builder /app/_build .
-RUN chown -R app: ./prod
-USER app
-
-COPY entrypoint.sh .
-
-# Run the Phoenix app
-CMD ["./entrypoint.sh"]
-
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs locales inotify-tools gcc g++ make \
+    && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+    && locale-gen \
+    && rm -rf /var/cache/apt \
+    && npm install -g yarn \
+    && mix local.hex --force \
+    && mix local.rebar --force

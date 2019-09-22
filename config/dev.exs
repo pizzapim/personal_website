@@ -4,8 +4,8 @@ use Mix.Config
 config :personal_website, PersonalWebsite.Repo,
   username: "postgres",
   password: "root",
-  database: "personal_website_dev",
-  hostname: "localhost",
+  database: "personal_website",
+  hostname: "database",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

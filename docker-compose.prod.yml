@@ -8,13 +8,10 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: personal_website
-    volumes:
-      - ./docker/data/database:/var/lib/postgres/data
 
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: personal-website
+    restart: always
     ports:
       - ${APP_PORT}:${APP_PORT}
     environment:
@@ -25,10 +22,5 @@ services:
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       APP_HOSTNAME: ${APP_HOSTNAME}
       ADMIN_PASS_HASH: ${ADMIN_PASS_HASH}
-    volumes:
-      - .:/workspace
-      - ~/.gitconfig:/root/.gitconfig
-      - ~/.ssh:/root/.ssh
-    command: sleep infinity
     depends_on:
       - database
