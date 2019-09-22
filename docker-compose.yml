@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: personal_website_dev
     volumes:
-      - ./docker/data/database:/var/lib/postgres/data
+      - pgdata:/var/lib/postgresql/data
     container_name: personal_website_database_dev
 
   web_dev:
@@ -34,3 +34,6 @@ services:
     depends_on:
       - database
     container_name: personal_website_web_dev
+
+volumes:
+  pgdata:
