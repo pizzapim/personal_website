@@ -1,6 +1,7 @@
 defmodule PersonalWebsite.Tags do
   @behaviour Ecto.Type
   def type, do: {:array, :string}
+  def embed_as(_), do: :self
 
   def cast(str) when is_binary(str) do
     str
@@ -23,4 +24,8 @@ defmodule PersonalWebsite.Tags do
   def load(_), do: :error
 
   def display(tags) when is_list(tags), do: Enum.join(tags, ", ")
+
+  def equal?(tags1, tags2) do
+    Enum.sort(tags1) == Enum.sort(tags2)
+  end
 end

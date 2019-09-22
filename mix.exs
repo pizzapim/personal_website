@@ -20,7 +20,7 @@ defmodule PersonalWebsite.MixProject do
   def application do
     [
       mod: {PersonalWebsite.Application, []},
-      extra_applications: [:logger, :runtime_tools, :edeliver]
+      extra_applications: [:logger, :runtime_tools]
     ]
   end
 
@@ -43,9 +43,7 @@ defmodule PersonalWebsite.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:argon2_elixir, "~> 2.0"},
-      {:edeliver, "~> 1.6.0"},
-      {:distillery, "2.0.14", warn_missing: false} # Newer versions give errors.
+      {:argon2_elixir, "~> 2.0"}
     ]
   end
 
