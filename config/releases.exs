@@ -21,6 +21,6 @@ config :personal_website,
 config :personal_website, PersonalWebsite.Repo,
   username: db_user,
   password: db_password,
-  database: "personal_website",
+  database: "personal_website_prod",
   hostname: db_host,
   pool_size: 10

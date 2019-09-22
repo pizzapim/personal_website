@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.7'
 
 services:
   database:
@@ -7,10 +7,16 @@ services:
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: personal_website
+      POSTGRES_DB: personal_website_prod
+    volumes:
+      - pgdata_prod:/var/lib/postgresql/data
+    container_name: personal_website_database_prod
 
-  web:
-    image: personal-website
+  web_prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    image: personal_website_web_prod
     restart: always
     ports:
       - ${APP_PORT}:${APP_PORT}
@@ -24,3 +30,7 @@ services:
       ADMIN_PASS_HASH: ${ADMIN_PASS_HASH}
     depends_on:
       - database
+    container_name: personal_website_web_prod
+
+volumes:
+  pgdata_prod:

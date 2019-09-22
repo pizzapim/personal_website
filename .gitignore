@@ -39,6 +39,5 @@ config/dev.secret.exs
 
 /priv/cert/
 
-*.swp
-*.swo
 .env
+.env.prod

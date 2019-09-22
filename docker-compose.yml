@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.7'
 
 services:
   database:
@@ -9,13 +9,14 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: personal_website_dev
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata_dev:/var/lib/postgresql/data
     container_name: personal_website_database_dev
 
   web_dev:
     build:
       context: .
       dockerfile: Dockerfile
+    image: personal_website_web_dev
     ports:
       - ${APP_PORT}:${APP_PORT}
     environment:
@@ -36,4 +37,4 @@ services:
     container_name: personal_website_web_dev
 
 volumes:
-  pgdata:
+  pgdata_dev:
