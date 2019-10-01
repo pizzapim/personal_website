@@ -11,6 +11,8 @@ services:
     volumes:
       - pgdata_prod:/var/lib/postgresql/data
     container_name: personal_website_database_prod
+    networks:
+      - main
 
   web_prod:
     build:
@@ -31,6 +33,13 @@ services:
     depends_on:
       - database
     container_name: personal_website_web_prod
+    networks:
+      main:
+        aliases:
+          - web
 
 volumes:
   pgdata_prod:
+
+networks:
+  main:
