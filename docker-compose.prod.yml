@@ -15,10 +15,11 @@ services:
       - main
 
   web_prod:
-    build:
-      context: .
-      dockerfile: Dockerfile.prod
-    image: personal_website_web_prod
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile.prod
+    # image: personal_website_web_prod
+    image: pizzapim/personal_website:latest
     restart: always
     ports:
       - ${APP_PORT}:${APP_PORT}
