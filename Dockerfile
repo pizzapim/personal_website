@@ -1,14 +1,21 @@
-FROM elixir:latest
+FROM elixir:1.9
 
-ENV LANG=en_US.UTF-8
-ENV LANGUAGE=en_US:en
-ENV LC_ALL=en_US.UTF-8
+ENV DEBIAN_FRONTEND=noninteractive
+ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
+
+# Fix locale to use UTF-8
+RUN apt-get update \
+    && apt-get install -y apt-utils >/dev/null 2>&1 \
+    && apt-get install -y --no-install-recommends locales \
+    && echo "LC_ALL=en_US.UTF-8" >> /etc/environment \
+    && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+    && echo "LANG=en_US.UTF-8" > /etc/locale.conf \
+    && locale-gen en_US.UTF-8 2>&1
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs locales inotify-tools gcc g++ make \
-    && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
-    && locale-gen \
-    && rm -rf /var/cache/apt \
+    && apt-get install -y --no-install-recommends \
+      nodejs inotify-tools gcc g++ make \
+    && rm -rf /var/lib/apt/lists/* \
     && npm install -g yarn \
     && mix local.hex --force \
     && mix local.rebar --force
