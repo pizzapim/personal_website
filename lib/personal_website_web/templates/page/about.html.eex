@@ -42,5 +42,5 @@ In terms of video games, I play all sorts of genres. From platformers to CRPGs, 
 <h2>How is this site written?</h2>
 
 <p>
-This site is written in Elixir, using the <a href="https://phoenixframework.org/">Phoenix framework</a>. Currently it's deployed on an HP Thin Client at my home and its source can be found <a href="https://github.com/pizzapim/personal_website">here (GitHub)</a>.
+This site is written in Elixir, using the <a href="https://phoenixframework.org/">Phoenix framework</a>. Currently it's deployed as a Docker container on a <a href="https://www.gigabyte.com/Mini-PcBarebone/GB-BLCE-4105-rev-10">Gigabyte BRIX</a> at my home and its source can be found <a href="https://github.com/pizzapim/personal_website">here (GitHub)</a>.
 </p>
