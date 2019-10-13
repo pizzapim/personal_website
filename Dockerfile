@@ -19,3 +19,6 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
     && npm install -g yarn \
     && mix local.hex --force \
     && mix local.rebar --force
+
+WORKDIR /workspace
+ENTRYPOINT ["/workspace/entrypoint.sh"]

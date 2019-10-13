@@ -48,7 +48,7 @@ COPY --from=app_builder /app/_build .
 RUN chown -R app: ./prod
 USER app
 
-COPY entrypoint.sh .
+COPY entrypoint.prod.sh .
 
 # Run the Phoenix app
-CMD ["./entrypoint.sh"]
+CMD ["./entrypoint.prod.sh"]
