@@ -1,6 +1,20 @@
 version: '3.7'
 
 services:
+  ouroboros:
+    container_name: personal_website_ouroboros
+    image: pyouroboros/ouroboros
+    environment:
+      CLEANUP: "true"
+      INTERVAL: 300
+      LOG_LEVEL: info
+      SELF_UPDATE: "true"
+      MONITOR: personal_website_web_prod
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $HOME/.docker/config.json:/root/.docker/config.json
+
   database:
     image: postgres:11
     restart: always
@@ -15,10 +29,6 @@ services:
       - main
 
   web_prod:
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile.prod
-    # image: personal_website_web_prod
     image: pizzapim/personal_website:latest
     restart: always
     ports:
