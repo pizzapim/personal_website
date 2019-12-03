@@ -1,0 +1,4 @@
+<h4><%= link("Upload new picture", to: Routes.pictures_path(@conn, :new)) %></h4>
+<%= for picture <- @pictures do %>
+  <img src="<%= PersonalWebsite.PictureUploader.url({picture.picture, picture}) %>">
+<% end %>

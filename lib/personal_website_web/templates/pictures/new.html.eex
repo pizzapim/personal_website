@@ -1,0 +1,6 @@
+<%= form_for @changeset, Routes.pictures_path(@conn, :create), [multipart: true], fn f -> %>
+  <label>Photo</label>
+  <%= file_input f, :picture %>
+  <%= error_tag f, :picture %>
+  <%= submit "Submit" %>
+<% end %>

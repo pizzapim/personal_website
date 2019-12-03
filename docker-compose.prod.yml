@@ -48,9 +48,12 @@ services:
       main:
         aliases:
           - web
+    volumes:
+      - picture_uploads:./uploads
 
 volumes:
   pgdata_prod:
+  picture_uploads:
 
 networks:
   main:

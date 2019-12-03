@@ -22,5 +22,7 @@ defmodule PersonalWebsiteWeb.Router do
     get "/auth", AuthController, :new
     post "/auth", AuthController, :create
     delete "/auth", AuthController, :destroy
+
+    resources "/pictures", PicturesController, only: [:index, :new, :create]
   end
 end
