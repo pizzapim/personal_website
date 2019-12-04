@@ -32,7 +32,7 @@ nav p {
   color: #444;
 }
 
-form input[type=text], form textarea {
+form input[type=text], form textarea, form input[type=checkbox] {
   display: block;
 }
 

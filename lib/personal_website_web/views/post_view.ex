@@ -2,7 +2,6 @@ defmodule PersonalWebsiteWeb.PostView do
   use PersonalWebsiteWeb, :view
   alias PersonalWebsiteWeb.LayoutView
   alias PersonalWebsite.Post
-  alias PersonalWebsite.Picture
 
   def get_title("index.html", _assigns) do
     LayoutView.get_title

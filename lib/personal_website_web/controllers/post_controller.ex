@@ -2,29 +2,30 @@ defmodule PersonalWebsiteWeb.PostController do
   import Ecto.Query
   use PersonalWebsiteWeb, :controller
   alias PersonalWebsite.{Repo, Post}
+  alias PersonalWebsiteWeb.Plugs.AuthenticateAdmin
 
-  plug PersonalWebsiteWeb.Plugs.AuthenticateAdmin
-       when action not in [:show, :index, :project_index]
+  plug AuthenticateAdmin when action not in [:show, :index, :project_index]
 
   def index(%Plug.Conn{path_info: path} = conn, _params) when hd(path) == "projects" do
-    posts =
-      Repo.all(
-        from p in Post,
-          where: "project" in type(p.tags, {:array, :string}),
-          order_by: [desc: p.inserted_at]
-      )
+    posts = Post.projects()
+            |> Post.published(AuthenticateAdmin.is_admin(conn))
+            |> Repo.all()
 
     render(conn, :index, posts: posts, type: "projects")
   end
 
   def index(conn, _params) do
-    posts = Repo.all(from p in Post, order_by: [desc: p.inserted_at])
+    posts = Post.all()
+            |> Post.published(AuthenticateAdmin.is_admin(conn))
+            |> Repo.all()
 
     render(conn, :index, posts: posts, type: "posts")
   end
 
   def show(conn, %{"post_slug" => post_slug}) do
-    post = find_post(post_slug)
+    post = Post.find(post_slug)
+           |> Post.published(AuthenticateAdmin.is_admin(conn))
+           |> Repo.one()
     if post do
       render(conn, :show, post: post)
     else
@@ -50,7 +51,8 @@ defmodule PersonalWebsiteWeb.PostController do
   end
 
   def edit(conn, %{"post_slug" => post_slug}) do
-    post = find_post(post_slug)
+    post = Post.find(post_slug)
+           |> Repo.one()
     if post do
       changeset = Post.changeset(post)
       render(conn, :edit, changeset: changeset, post: post)
@@ -60,7 +62,8 @@ defmodule PersonalWebsiteWeb.PostController do
   end
 
   def update(conn, %{"post_slug" => post_slug, "post" => post_params}) do
-    post = find_post(post_slug)
+    post = Post.find(post_slug)
+           |> Repo.one()
     if post do
       changeset = Post.changeset(post, post_params)
 
@@ -77,24 +80,9 @@ defmodule PersonalWebsiteWeb.PostController do
   end
 
   def delete(conn, %{"post_slug" => post_slug}) do
-    post_id = get_post_id_from_slug(post_slug)
+    post_id = Post.slug_to_id(post_slug)
     Repo.delete_all(from p in Post, where: p.id == ^post_id)
     redirect(conn, to: "/")
-  end
-
-  defp find_post(post_slug) do
-    if post_id = get_post_id_from_slug(post_slug) do
-      Repo.one(from p in Post, where: p.id == ^post_id)
-    end
-  end
-
-  defp get_post_id_from_slug(post_slug) do
-    post_id = hd(String.split(post_slug, "-"))
-
-    case Integer.parse(post_id) do
-      {post_id, _rest} -> post_id
-      :error -> false
-    end
   end
 
   defp not_found(conn) do

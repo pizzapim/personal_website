@@ -7,6 +7,8 @@
   <%= text_input f, :summary, placeholder: "Summary" %>
   <%= label f, :tags %>
   <%= text_input f, :tags, placeholder: "Tags" %>
+  <%= label f, :published %>
+  <%= checkbox f, :published %>
   <%= label f, :article %>
   <%= textarea f, :article, placeholder: "Article" %>
   <%= submit "Post" %>

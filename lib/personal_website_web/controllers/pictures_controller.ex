@@ -18,7 +18,7 @@ defmodule PersonalWebsiteWeb.PicturesController do
     changeset = Picture.changeset(%Picture{}, picture_params)
 
     case Repo.insert(changeset) do
-      {:ok, picture} ->
+      {:ok, _picture} ->
         conn
         |> put_flash(:info, "Image was added")
         |> redirect(to: Routes.pictures_path(conn, :index))
