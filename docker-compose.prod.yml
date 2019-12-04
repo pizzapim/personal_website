@@ -49,7 +49,7 @@ services:
         aliases:
           - web
     volumes:
-      - picture_uploads:/home/app/uploads
+      - picture_uploads:./home/app/uploads
 
 volumes:
   pgdata_prod:
