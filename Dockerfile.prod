@@ -46,6 +46,8 @@ RUN adduser -D -h /home/app app
 WORKDIR /home/app
 COPY --from=app_builder /app/_build .
 RUN chown -R app: ./prod
+RUN mkdir /home/app/uploads
+VOLUME ["/home/app/uploads"]
 USER app
 
 COPY entrypoint.prod.sh .
