@@ -6,12 +6,6 @@ defmodule PersonalWebsite.Application do
   use Application
 
   def start(_type, _args) do
-    # Calculate admin pass hash and remove password from memory.
-    hash = Application.get_env(:personal_website, :admin_pass)
-           |> Argon2.hash_pwd_salt()
-    Application.put_env(:personal_website, :admin_pass_hash, hash)
-    Application.put_env(:personal_website, :admin_pass, nil)
-
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository

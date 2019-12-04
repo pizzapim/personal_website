@@ -40,7 +40,7 @@ services:
       DB_HOST: ${DB_HOST}
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       APP_HOSTNAME: ${APP_HOSTNAME}
-      ADMIN_PASS: ${ADMIN_PASS}
+      ADMIN_PASS_HASH: ${ADMIN_PASS_HASH}
     depends_on:
       - database
     container_name: personal_website_web_prod

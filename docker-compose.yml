@@ -28,7 +28,7 @@ services:
       DB_HOST: ${DB_HOST}
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       APP_HOSTNAME: ${APP_HOSTNAME}
-      ADMIN_PASS: ${ADMIN_PASS}
+      ADMIN_PASS_HASH: ${ADMIN_PASS_HASH}
     volumes:
       - .:/workspace
       - ~/.gitconfig:/root/.gitconfig
