@@ -11,3 +11,5 @@ config :logger, level: :info
 
 # Which server to start per endpoint:
 config :personal_website, PersonalWebsiteWeb.Endpoint, server: true
+
+config :personal_website, :uploads_path, "/home/app/uploads"

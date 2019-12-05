@@ -15,9 +15,10 @@ defmodule PersonalWebsiteWeb.Endpoint do
     gzip: true,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
+  uploads_path = Application.get_env(:personal_website, :uploads_path) |> Path.expand()
   plug Plug.Static,
     at: "/uploads",
-    from: Path.expand("./uploads"),
+    from: uploads_path,
     gzip: false
 
   # Code reloading can be explicitly enabled under the

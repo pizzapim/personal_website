@@ -47,11 +47,9 @@ WORKDIR /home/app
 COPY --from=app_builder /app/_build .
 RUN chown -R app: ./prod
 
+USER app
 RUN mkdir /home/app/uploads
 VOLUME ["/home/app/uploads"]
-RUN chown -R app: ./uploads
-
-USER app
 
 COPY entrypoint.prod.sh .
 

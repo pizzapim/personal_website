@@ -29,7 +29,7 @@ services:
       - main
 
   web_prod:
-    image: pizzapim/personal_website:latest
+    image: personal_website:local
     restart: always
     ports:
       - ${APP_PORT}:${APP_PORT}
