@@ -1,3 +1,9 @@
+<%= if AuthenticateAdmin.is_admin?(@conn) do %>
+  <%= link("Admin", to: Routes.auth_path(@conn, :new)) %></br>
+  <%= link("Uploaded pictures", to: Routes.pictures_path(@conn, :index)) %></br>
+  <%= link("New post", to: Routes.post_path(@conn, :new)) %>
+<% end %>
+
 <h1>Recent <%= @type %></h1>
 
 <div class="recent-posts">

@@ -8,7 +8,7 @@ defmodule PersonalWebsiteWeb.PostController do
 
   def index(%Plug.Conn{path_info: path} = conn, _params) when hd(path) == "projects" do
     posts = Post.projects()
-            |> Post.published(AuthenticateAdmin.is_admin(conn))
+            |> Post.published(AuthenticateAdmin.is_admin?(conn))
             |> Repo.all()
 
     render(conn, :index, posts: posts, type: "projects")
@@ -16,7 +16,7 @@ defmodule PersonalWebsiteWeb.PostController do
 
   def index(conn, _params) do
     posts = Post.all()
-            |> Post.published(AuthenticateAdmin.is_admin(conn))
+            |> Post.published(AuthenticateAdmin.is_admin?(conn))
             |> Repo.all()
 
     render(conn, :index, posts: posts, type: "posts")
@@ -24,7 +24,7 @@ defmodule PersonalWebsiteWeb.PostController do
 
   def show(conn, %{"post_slug" => post_slug}) do
     post = Post.find(post_slug)
-           |> Post.published(AuthenticateAdmin.is_admin(conn))
+           |> Post.published(AuthenticateAdmin.is_admin?(conn))
            |> Repo.one()
     if post do
       render(conn, :show, post: post)

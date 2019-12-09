@@ -1,5 +1,7 @@
 <h1>Create a new post</h1>
 
+<%= link("Uploaded pictures", to: Routes.pictures_path(@conn, :index)) %> </br>
+
 <%= form_for @changeset, LayoutView.post_path(@conn, :create), fn f -> %>
   <%= label f, :title %>
   <%= text_input f, :title, placeholder: "Title" %>

@@ -1,4 +1,5 @@
 <h1>Edit post</h1>
+<%= link("Uploaded pictures", to: Routes.pictures_path(@conn, :index)) %> </br>
 
 <%= link("Delete post", to: LayoutView.post_path(@conn, :delete, @post), method: :delete) %>
 
