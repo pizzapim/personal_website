@@ -11,5 +11,5 @@
 
 ## Production
 * Create `.env.prod` file in root of project and add environmental variables. One per line, in the form `key=value`.
-* Use `sudo docker-compose --env-file .env -f docker-compose.yml down` to remove development containers.
+* Use `sudo docker-compose down` to remove development containers.
 * Use `sudo docker-compose --env-file .env.prod -f docker-compose.prod.yml up -d --build` to start the production server.

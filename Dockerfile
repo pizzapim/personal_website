@@ -21,4 +21,3 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
     && mix local.rebar --force
 
 WORKDIR /workspace
-ENTRYPOINT ["/workspace/entrypoint.sh"]

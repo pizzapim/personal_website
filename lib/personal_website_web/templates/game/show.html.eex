@@ -1,0 +1,43 @@
+<h1>Show Game</h1>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @game.title %>
+  </li>
+
+  <li>
+    <strong>Finished:</strong>
+    <%= @game.finished %>
+  </li>
+
+  <li>
+    <strong>Finished at:</strong>
+    <%= @game.finished_at %>
+  </li>
+
+  <li>
+    <strong>Developer:</strong>
+    <%= @game.developer %>
+  </li>
+
+  <li>
+    <strong>Publisher:</strong>
+    <%= @game.publisher %>
+  </li>
+
+  <li>
+    <strong>Platform:</strong>
+    <%= @game.platform %>
+  </li>
+
+  <li>
+    <strong>Released at:</strong>
+    <%= @game.released_at %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.game_path(@conn, :edit, @game) %></span>
+<span><%= link "Back", to: Routes.game_path(@conn, :index) %></span>

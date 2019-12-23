@@ -33,7 +33,7 @@ services:
       - .:/workspace
       - ~/.gitconfig:/root/.gitconfig
       - ~/.ssh:/root/.ssh
-    command: sleep infinity
+    # command: sleep infinity
     depends_on:
       - database
     container_name: personal_website_web_dev
@@ -41,6 +41,8 @@ services:
       main:
         aliases:
           - web
+    # entrypoint: ["tail", "-f", "/dev/null"]
+    entrypoint: /workspace/entrypoint.sh
 
 volumes:
   pgdata_dev:

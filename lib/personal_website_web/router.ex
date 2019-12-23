@@ -24,5 +24,7 @@ defmodule PersonalWebsiteWeb.Router do
     delete "/auth", AuthController, :destroy
 
     resources "/pictures", PicturesController, only: [:index, :new, :create]
+
+    resources "/games", GameController
   end
 end
