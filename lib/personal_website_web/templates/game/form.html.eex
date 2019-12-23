@@ -14,7 +14,7 @@
   <%= error_tag f, :finished %>
 
   <%= label f, :finished_at %>
-  <%= date_select f, :finished_at %>
+  <%= date_select f, :finished_at, year: [options: 1972..DateTime.utc_now().year] %>
   <%= error_tag f, :finished_at %>
 
   <%= label f, :developer %>
@@ -30,7 +30,7 @@
   <%= error_tag f, :platform %>
 
   <%= label f, :released_at %>
-  <%= date_select f, :released_at %>
+  <%= date_select f, :released_at, year: [options: 1972..DateTime.utc_now().year] %>
   <%= error_tag f, :released_at %>
 
   <div>
