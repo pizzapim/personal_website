@@ -99,6 +99,6 @@ defmodule PersonalWebsite.Games do
 
   """
   def change_game(%Game{} = game) do
-    Game.changeset(game, %{})
+    Game.changeset(game, %{finished_at: Date.utc_today()})
   end
 end

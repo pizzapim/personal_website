@@ -4,6 +4,7 @@ defmodule PersonalWebsite.Games.Game do
 
   schema "games" do
     field :developer, :string
+    field :wishlist, :boolean, default: false
     field :finished, :boolean, default: false
     field :finished_at, :date
     field :platform, :string
@@ -17,7 +18,7 @@ defmodule PersonalWebsite.Games.Game do
   @doc false
   def changeset(game, attrs) do
     game
-    |> cast(attrs, [:title, :finished, :finished_at, :developer, :publisher, :platform, :released_at])
-    |> validate_required([:title, :finished, :finished_at, :developer, :publisher, :platform, :released_at])
+    |> cast(attrs, [:title, :wishlist, :finished, :finished_at, :developer, :publisher, :platform, :released_at])
+    |> validate_required([:title, :wishlist, :finished, :finished_at, :developer, :publisher, :platform, :released_at])
   end
 end

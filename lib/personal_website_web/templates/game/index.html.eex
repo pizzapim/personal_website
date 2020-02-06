@@ -1,9 +1,12 @@
 <h1>Listing Games</h1>
 
-<table>
+<span><%= link "New Game", to: Routes.game_path(@conn, :new) %></span>
+
+<table id="index-games">
   <thead>
     <tr>
       <th>Title</th>
+      <th>Wishlist</th>
       <th>Finished</th>
       <th>Finished at</th>
       <th>Developer</th>
@@ -18,6 +21,7 @@
 <%= for game <- @games do %>
     <tr>
       <td><%= game.title %></td>
+      <td><%= game.wishlist %></td>
       <td><%= game.finished %></td>
       <td><%= game.finished_at %></td>
       <td><%= game.developer %></td>
@@ -34,5 +38,3 @@
 <% end %>
   </tbody>
 </table>
-
-<span><%= link "New Game", to: Routes.game_path(@conn, :new) %></span>

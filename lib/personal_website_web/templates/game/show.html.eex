@@ -8,6 +8,11 @@
   </li>
 
   <li>
+    <strong>Wishlist:</strong>
+    <%= @game.wishlist %>
+  </li>
+
+  <li>
     <strong>Finished:</strong>
     <%= @game.finished %>
   </li>

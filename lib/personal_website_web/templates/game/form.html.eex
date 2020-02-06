@@ -9,6 +9,10 @@
   <%= text_input f, :title %>
   <%= error_tag f, :title %>
 
+  <%= label f, :wishlist %>
+  <%= checkbox f, :wishlist %>
+  <%= error_tag f, :wishlist %>
+
   <%= label f, :finished %>
   <%= checkbox f, :finished %>
   <%= error_tag f, :finished %>
